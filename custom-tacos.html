@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tacos Customization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:"Lobster", sans-serif;  
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(1,0,13,1) 100%);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.menu{
+    padding: 0 10px ;
+    display: flex;
+    justify-content: space-between;
+}
+.menu h1{
+    font-size: 2rem;
+    color: #333333bc;
+    cursor: pointer;
+}
+.panier-container {
+    display: flex;
+    align-items: center;
+
+}
+.panier-container span {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+h1, h2 {
+    color: #333;
+}
+button{
+    padding: 5px;
+    border: 2px solid #ff5722;
+    border-radius: 20px;
+}
+.summary button{
+    padding: 10px 20px;
+    background-color: #ff5722;
+    box-shadow: 5px 10px 20px #a83816;
+
+}
+.summary button:disabled{
+    padding: 10px 20px;
+    background-color: #ffa78c;
+    box-shadow: initial;
+    border: initial;
+}
+.customization-section {
+    margin-bottom: 20px;
+}
+
+.option-group {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    border: 5px dotted black;
+    border-radius: 20px;
+}
+
+.option-group div {
+    padding: 4px;
+    width: 100px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.option-group div:hover{
+    background-color: #ff562258;
+}
+
+.option-group img {
+    width: 80px;
+    border-radius: 5px;
+}
+
+.option-group span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.option-group .selected {
+    border: 2px solid #ff5722;
+}
+
+.summary {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.summary p {
+    font-size: 16px;
+}
+.selected{
+    background-color: #ff5722;
+    color: #ffffff;
+}
+select {
+    margin: 20px 0;
+    width: 100%;
+    padding: 5px 20px;
+    appearance: none;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+select:focus{
+    border-color: #ff6200;
+}
+@media (max-width: 768px) {
+    .option-group  {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+    .summary button{
+        padding: 10px;
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <span onclick="window.location.href = 'index.html'"><h1>◄Revenir</h1></span>
+            <div class="panier-container">
+                <span onclick="window.location.href = 'cart-page.html'">🛒</span>
+                <h2>0</h2>
+            </div>
+        </div>
+        <h1>Personnalisez Votre Taco</h1>
+    
+        <section class="customization-section">
+            <h2>1. Choisissez Votre Taille</h2>
+            <div class="option-group" id="size-options">
+                <div class="selected" onclick="selectSize('Large - 38', 38)">
+                    <img src="tacos.png" alt="Taco Large">
+                    <span>Large - 38 DH</span>
+                </div>
+                <div onclick="selectSize('XLarge - 48', 48)">
+                    <img src="tacos.png" alt="Taco XLarge">
+                    <span>XLarge - 48 DH</span>
+                </div>
+                <div onclick="selectSize('XXLarge - 58', 58)">
+                    <img src="tacos.png" alt="Taco XXLarge">
+                    <span>XXLarge - 58 DH</span>
+                </div>
+            </div>
+        </section>
+    
+        <section class="customization-section">
+            <h2>2. Choisissez Votre Viande</h2>
+            <div class="option-group" id="meat-options">
+                <div class="selected" onclick="selectMeat('Viande Hachée')">
+                    <img src="viende-hache.png" alt="Viande Hachée">
+                    <span>Viande Hachée</span>
+                </div>
+                <div onclick="selectMeat('Escalope de Poulet')">
+                    <img src="escalope_poulet.png" alt="Escalope de Poulet">
+                    <span>Escalope de Poulet</span>
+                </div>
+                <div onclick="selectMeat('Merguez')">
+                    <img src="merguez.png" alt="Merguez">
+                    <span>Merguez</span>
+                </div>
+                <div onclick="selectMeat('Viande Kebab')">
+                    <img src="kebab-meat.png" alt="Viande Kebab">
+                    <span>Viande Kebab</span>
+                </div>
+                <div onclick="selectMeat('Poisson')">
+                    <img src="fish.png" alt="Poisson">
+                    <span>Fish</span>
+                </div>
+                <div onclick="selectMeat('Nuggets')">
+                    <img src="chiken-nuggets2.png" alt="Nuggets">
+                    <span>Nuggets</span>
+                </div>
+                <div onclick="selectMeat('Tenders')">
+                    <img src="tenders.png" alt="Tenders">
+                    <span>Tenders</span>
+                </div>
+                <div onclick="selectMeat('Cordon Bleu')">
+                    <img src="cordon-bleu.png" alt="Cordon Bleu">
+                    <span>Cordon Bleu</span>
+                </div>
+            </div>
+        </section>
+    
+        <section class="customization-section">
+            <h2>3. Choisissez Votre Sauce</h2>
+            <div class="option-group" id="sauce-options">
+                <button onclick="selectSauce('Blanche')">Blanche</button>
+                <button onclick="selectSauce('Ketchup')">Ketchup</button>
+                <button onclick="selectSauce('Mayonnaise')">Mayonnaise</button>
+                <button onclick="selectSauce('Biggy')">Biggy</button>
+                <button onclick="selectSauce('Algérienne')">Algérienne</button>
+                <button onclick="selectSauce('Barbecue')">Barbecue</button>
+                <button onclick="selectSauce('Samouraï')">Samouraï</button>
+                <button onclick="selectSauce('Sultane')">Sultane</button>
+            </div>
+        </section>
+    
+        <section class="customization-section">
+            <h2>4. Ajoutez des Suppléments (+6 DH chacun)</h2>
+            <div class="option-group" id="supplement-options">
+                <div onclick="toggleSupplement('Vache qui Rit')">
+                    <img src="vach-qui-rit.png" alt="Vache qui Rit">
+                    <span>Vache qui Rit</span>
+                </div>
+                <div onclick="toggleSupplement('Dinde')">
+                    <img src="dind.png" alt="Dinde">
+                    <span>Dinde</span>
+                </div>
+                <div onclick="toggleSupplement('Cheddar')">
+                    <img src="cheddar.png" alt="Cheddar">
+                    <span>Cheddar</span>
+                </div>
+                <div onclick="toggleSupplement('Chèvre')">
+                    <img src="fromage-de-chevre.png" alt="Chèvre">
+                    <span>Chèvre</span>
+                </div>
+                <div onclick="toggleSupplement('Mozzarella')">
+                    <img src="mzrlla.png" alt="Mozzarella">
+                    <span>Mozzarella</span>
+                </div>
+                <div onclick="toggleSupplement('Salade Tomate')">
+                    <img src="salad-tomate.png" alt="Salade Tomate">
+                    <span>Salade Tomate (GRATUIT)</span>
+                </div>
+            </div>
+        </section>
+        <section class="customization-section">
+            <h2>4. Ajoutez des garnitures</h2>
+            <label>
+                Boisson:
+                <select name="" onchange="selectGarnitures()" id="boisson-select">
+                    <option value="Coca Cola">Coca Cola</option>
+                    <option value="Fanta">Fanta</option>
+                    <option value="Pepsi">Pepsi</option>
+                    <option value="Oasis">Oasis</option>
+                </select>
+            </label>
+            <label >
+                Supplément
+                <select name="" onchange="selectGarnitures()" id="suplements-select">
+                    <option value="Frites">Frites</option>
+                    <option value="Cheesy Frites">Cheesy Frites</option>
+                </select>
+            </label>
+        </section>
+    
+        <div class="summary">
+            <h2>Ingrédients de Votre Taco</h2>
+            <p id="summary"></p>
+            <button id="add-to-cart" onclick="add_to_cart()">AJOUTER AU PANIER</button>
+        </div>
+    </div>
+    
+
+    <script>
+let selectedSize = "Large - 38 DH";
+let selectedMeat = "Viande Hachée";
+let selectedSauce = [];
+let selectedSupplements = [];
+let selectedGarnitures = [document.getElementById("boisson-select").value,document.getElementById("suplements-select").value]
+let basePrice = 38;
+cart=document.querySelector(".panier-container")
+added_products=localStorage.getItem("added_products")
+cartdata=JSON.parse(localStorage.getItem("added_products")) || [];
+
+function selectSize(size, price) {
+    selectedSize = size;
+    basePrice = price; 
+    const group = document.getElementById("size-options");
+    Array.from(group.children).forEach(button =>{
+        button.classList.remove("selected");
+        if (button.textContent.includes(size)) {
+            button.classList.toggle("selected");
+        }
+    })
+    updateSummary();
+    checkCompletion();
+}
+
+function selectMeat(meat) {
+    selectedMeat = meat;
+    const group = document.getElementById("meat-options");
+    Array.from(group.children).forEach(button =>{
+        button.classList.remove("selected");
+        if (button.textContent.includes(meat)) {
+            button.classList.toggle("selected");
+        }
+    })
+    updateSummary();
+    checkCompletion();
+}
+
+function selectSauce(sauce) {
+    const index = selectedSauce.indexOf(sauce);
+    if (index > -1) {
+        selectedSauce.splice(index, 1);
+    } else {
+        selectedSauce.push(sauce);
+    }
+    highlightSelected("sauce-options", sauce);
+    updateSummary();
+    checkCompletion();
+}
+function selectGarnitures() {
+    selectedGarnitures= [document.getElementById("boisson-select").value,document.getElementById("suplements-select").value];
+    updateSummary()
+}
+
+function toggleSupplement(supplement) {
+    const index = selectedSupplements.indexOf(supplement);
+    if (index > -1) {
+        selectedSupplements.splice(index, 1);
+    } else {
+        selectedSupplements.push(supplement);
+    }
+
+
+
+    highlightSelected("supplement-options", supplement);
+    updateSummary();
+}
+
+function updateSummary() {
+    const supplementPrice = selectedSupplements.includes("Salade Tomate")
+        ? (selectedSupplements.length - 1) * 6
+        : selectedSupplements.length * 6;
+
+    total = basePrice + supplementPrice;
+
+    let summaryText = `
+        Taille: ${selectedSize || "Pas encore sélectionné"}<br>
+        Viande: ${selectedMeat || "Pas encore sélectionné"}<br>
+        Sauce: ${selectedSauce.length > 0 ? selectedSauce.join(", ") : "Pas encore sélectionné"}<br>
+        Suppléments: ${selectedSupplements.join(", ") || "None"}<br>
+        Garnitures: ${selectedGarnitures.join(", ") || "None"}<br>
+        Prix Total: ${total} DH
+    `;
+    document.getElementById("summary").innerHTML = summaryText;
+}
+
+function highlightSelected(groupId, value) {
+    const group = document.getElementById(groupId);
+    Array.from(group.children).forEach(button => {
+        if (button.textContent.includes(value)) {
+            button.classList.toggle("selected");
+        }
+    });
+}
+
+function checkCompletion() {
+    const addToCartButton = document.getElementById("add-to-cart");
+    if (selectedSize && selectedMeat && selectedSauce.length > 0) {
+        addToCartButton.disabled = false;
+    } else {
+        addToCartButton.disabled = true;
+    }
+}
+
+function add_to_cart(){
+    product_added_to_cart={nom:"custom taco",taille:selectedSize,viande:selectedMeat,sauces:selectedSauce,supplements:selectedSupplements,garnitures:selectedGarnitures,quantité:1,prix:total};
+    cartdata.push(product_added_to_cart);
+    localStorage.setItem("added_products",JSON.stringify(cartdata));
+    cart_items_count=cart.querySelector("h2");
+    cart_items_count.textContent=parseInt(cart_items_count.textContent)+1;
+    alert("votre taco a été ajouté à votre 🛒")
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkCompletion();
+    if (added_products){
+        cart_items_count=cart.querySelector("h2")
+        cart_items_count.textContent=JSON.parse(added_products).length
+    }
+    
+});
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="acceuil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Babek</title>
+</head>
+<body>
+    <div class="navbar-mobile">
+        <div class="links">
+            <a href=""><h1>accueil</h1></a>
+            <a href=""><h1>menu</h1></a>
+            <a href=""><h1>à-propos</h1></a>
+        </div>
+
+        <div class="contact">
+            <h1>+212-537566767</h1>
+            <ul>
+                <li><img src="icons8-facebook-48.png" alt="babek facebook"></li>
+                <li><img src="icons8-instagram-48.png" alt="babek instagram"></li>
+                <li><img src="icons8-gmail-48.png" alt="babek email"></li>
+            </ul>
+            
+            
+        </div>
+    </div>
+   <section id="banner">
+    <div class="banner">
+    <div class="bgnner-txt">
+        <h1 >1er CHAÎNE DE KEBAB AU MAROC!</h1>
+        <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non inventore, eius, nobis rem quasi accusamus minima repellendus dolorem voluptates ipsam voluptatem tempore ipsum? Nihil est facere doloremque sequi tempora quibusdam!</h4>
+        <div class="button" onclick="window.location.href = 'custom-tacos.html'">CREE MON TACOS</div> 
+    </div>
+        
+    </div>
+    
+    <div class="navbar">
+        <div class="links">
+            <a href=""><h1>accueil</h1></a>
+            <a href="#menu"><h1>menu</h1></a>
+            <a href="#about-section"><h1>à-propos</h1></a>
+        </div>
+        <div class="logo"><a href=""><img src="logo_babek_Dark.png" alt="babek photo"></a></div>
+        <div class="toggle-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="contact">
+            <ul>
+                <li><img src="icons8-facebook-48.png" alt="babek facebook"></li>
+                <li><img src="icons8-instagram-48.png" alt="babek instagram"></li>
+                <li><img src="icons8-gmail-48.png" alt="babek email"></li>
+            </ul>
+            <h1>+212-537566767</h1>
+            
+        </div>
+    </div>
+   </section> 
+
+   <section id="menu">
+    <div class="menu-container">
+        <h1>MENU</h1>
+        <p>Créé par le feu, servi avec passion</p>
+        <div class="menu-radio">
+            <div class="food-type active" id="ftype1" onclick="menuClickHandeler(event)"><img src="tacos.png" alt=""><h3>TACOS</h3></div>
+            <div class="food-type" id="ftype2" onclick="menuClickHandeler(event)"><img src="naan.png" alt=""><h3>NAAN</h3></div>
+            <div class="food-type" id="ftype3" onclick="menuClickHandeler(event)"><img src="sandwish.png" alt=""><h3>SANDWISH</h3></div>
+            <div class="food-type" id="ftype4" onclick="menuClickHandeler(event)"><img src="kebab.png" alt=""><h3>KEBAB</h3></div>
+            <div class="food-type" id="ftype5" onclick="menuClickHandeler(event)"><img src="burger.png" alt=""><h3>BURGER</h3></div>
+            <div class="food-type" id="ftype6" onclick="menuClickHandeler(event)"><img src="assietes.png" alt=""><h3>ASSIETES</h3></div>
+            <div class="food-type" id="ftype7" onclick="menuClickHandeler(event)"><img src="chicken-nuggets.png" alt=""><h3>SUPLIMENTS</h3></div>
+            <div class="food-type" id="ftype8" onclick="menuClickHandeler(event)"><img src="caffe.png" alt=""><h3>BOISSONS</h3></div>
+        </div>
+    </div>
+   </section>
+   <section id="products">
+    <div class="panier-container">
+        <span onclick="window.location.href = 'cart-page.html'">🛒</span>
+        <h2>0</h2>
+    </div>
+    <h1 id="cree-tacos-btn-menu" onclick="window.location.href = 'custom-tacos.html'">CREE UN TACOS !!</h1>
+    <div class="products-container">
+        <div class="type1">
+            <div class="product-img"></div>
+            <h1>EXEMPLE</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type1">
+            <div class="product-img"></div>
+            <h1>EXEMPLE</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type1">
+            <div class="product-img"></div>
+            <h1>EXEMPLE</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type2">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 2</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type2">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 2</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type2">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 2</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type3">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 3</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+
+        <div class="type4">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 4</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type4">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 4</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type4">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 4</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type4">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 4</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type4">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 4</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+        
+        <div class="type5">
+            <div class="product-img"></div>
+            <h1>EXEMPLE 5</h1>
+            <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+            <div class="price-command">
+                <h3>Prix : 56dh</h3>
+                <h3 class="commander">Commander</h3>
+            </div>
+        </div>
+    <div class="type6">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 6</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type6">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 6</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type6">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 6</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type6">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 6</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type6">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 6</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type7">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 7</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type7">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 7</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type7">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 7</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type7">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 7</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type7">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 7</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type8">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 8</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type8">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 8</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type8">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 8</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type8">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 8</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+
+<div class="type8">
+    <div class="product-img"></div>
+    <h1>EXEMPLE 8</h1>
+    <p>Ceci n'est qu'un exemple et il est susceptible de changer.</p>
+    <div class="price-command">
+        <h3>Prix : 56dh</h3>
+        <h3 class="commander">Commander</h3>
+    </div>
+</div>
+        
+        
+        
+
+                                
+    </div>
+    
+   </section>
+
+    <section id="product-card">
+        <div class="product-card-cointainer">
+            <div class="product-card">
+                <div class="product-card-close" onclick="closeProductCard()" >
+                    <span>╳</span> 
+                </div> 
+                <div  class="product-card-img">
+                </div>
+                    <div class="product-card-text">
+                        <h1>EXAMPLE</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, ea omnis. Necessitatibus nulla, cum accusamus eveniet impedit expedita ratione, nihil quasi neque natus quas quis quos officia corrupti fuga earum?</p>
+                        <label>
+                            Boisson:
+                            <select name="" id="boisson-select">
+                                <option value="Coca Cola">Coca Cola</option>
+                                <option value="Fanta">Fanta</option>
+                                <option value="Pepsi">Pepsi</option>
+                                <option value="Oasis">Oasis</option>
+                            </select>
+                        </label>
+                        <label >
+                            Supplément
+                            <select name="" id="suplements-select">
+                                <option value="Frites">Frites</option>
+                                <option value="Cheesy Frites">Cheesy Frites</option>
+                            </select>
+                        </label>
+                        <label>Quantité:
+                            <br>
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice(event)">
+                            <button onclick="increaseQuantity()">+</button>
+                        </label>
+                        
+                        <h3>56 DH</h3>
+                        <button onclick="addToCart()">ajouter au panier</button>
+                    </div>
+                    
+            </div>
+        </div>
+    </section>
+
+   
+
+   <section id="about-section">
+    <h1>À propos de nous</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum enim, quam iste cum inventore quia quidem harum voluptatum officia, vel architecto ratione et rerum suscipit commodi nesciunt placeat, eum sed.</p>
+    </section>
+
+<footer>
+    <div class="contact-info">
+        <p>Contactez-nous:</p>
+        <p>Téléphone: +212-537566767</p>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 BABEK. Tous droits réservés.</p>
+    </div>
+</footer>
+
+   <script src="acceuilscript.js"></script>
+</body>
+</html>

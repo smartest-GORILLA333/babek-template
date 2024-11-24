@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <title>Livraison or Emporter</title>
+  <style>
+    body {
+      font-family: 'Lobster', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    span {
+      margin-right: 55%;
+      padding: 20px 0;
+      cursor: pointer;
+    }
+
+    span h1 {
+      font-size: 1.6rem;
+      color: rgba(51, 51, 51, 0.737);
+    }
+
+    h1 {
+      color: #ff5722;
+      margin: 0%;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .toggle-button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin: 0 5px;
+      background: #ddd;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .toggle-button.active {
+      background: #ff5722;
+      color: white;
+    }
+
+    .form-container {
+      width: 90%;
+      max-width: 450px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background: #ff5722;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e64a19;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .toggle-button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      input, select, textarea {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <span onclick="window.location.href = 'index.html'"><h1>◄ Revenir</h1></span>
+
+  <h1>Bienvenue Chez Babek!</h1>
+  <p>Choisissez votre méthode de commande</p>
+
+  <div class="buttons">
+    <button id="livraisonButton" class="toggle-button">Livraison</button>
+    <button id="emporterButton" class="toggle-button">Emporter</button>
+  </div>
+
+  <div id="livraisonForm" class="form-container">
+    <form 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSdfMndHVa6Seuw76rFxm09RJTxC132HbSIMwoSavuxUWgjrCQ/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="populateHiddenField('livraison');">
+      
+      <input type="hidden" id="hiddenFieldLivraison" name="entry.1844118623">
+      <input type="hidden" id="modeLivraison" name="entry.25165277">
+
+      <label for="nomLivraison">Nom:</label>
+      <input type="text" id="nomLivraison" name="entry.2005620554" required>
+
+      <label for="adressLivraison">Adresse:</label>
+      <input type="text" id="adressLivraison" name="entry.1065046570" required>
+
+      <label for="numLivraison">Numéro:</label>
+      <input type="text" id="numLivraison" name="entry.1166974658" pattern="^\d{9,13}$" required>
+
+      <label for="commentLivraison">Commentaire:</label>
+      <textarea id="commentLivraison" name="entry.839337160"></textarea>
+
+      <button type="submit">Submit Livraison</button>
+    </form>
+  </div>
+
+  <div id="emporterForm" class="form-container">
+    <form 
+      action="https://docs.google.com/forms/d/e/1FAIpQLScOlC9ZP6M1brFCYk-W8zwUfjew4QD7DGhDqjdJKvfPEONoDA/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="populateHiddenField('emporter');">
+      
+      <label for="selectEmpEmporter">Choisissez l'emplacement:</label>
+      <select id="selectEmpEmporter" name="entry.1822007291">
+        <option value="Babek Hay Riad">Babek Hay Riad</option>
+        <option value="Babek Agdal">Babek Agdal</option>
+        <option value="Babek Le Carrousel">Babek Le Carrousel</option>
+      </select>
+
+      <input type="hidden" id="hiddenFieldEmporter" name="entry.2143352534">
+      <input type="hidden" id="modeEmporter" name="entry.1772603803">
+
+      <label for="nomEmporter">Nom:</label>
+      <input type="text" id="nomEmporter" name="entry.335578795" required>
+
+      <label for="numEmporter">Numéro:</label>
+      <input type="text" id="numEmporter" name="entry.809203105" pattern="^\d{9,13}$" required>
+
+      <label for="heureEmporter">Heure:</label>
+      <input type="time" id="heureEmporter" onchange="validateTime()" name="entry.2044663224" required>
+
+      <label for="commentEmporter">Commentaire:</label>
+      <textarea id="commentEmporter" name="entry.1356982229"></textarea>
+
+      <button type="submit">Submit Emporter</button>
+    </form>
+  </div>
+
+  <iframe 
+    name="hidden_iframe" 
+    style="display:none;" 
+    onload="if(submitted) { showResponse(); }">
+  </iframe>
+
+  <script>
+    let submitted = false;
+
+    const livraisonButton = document.getElementById('livraisonButton');
+    const emporterButton = document.getElementById('emporterButton');
+    const livraisonForm = document.getElementById('livraisonForm');
+    const emporterForm = document.getElementById('emporterForm');
+
+    livraisonButton.addEventListener('click', () => setActiveForm('livraison'));
+    emporterButton.addEventListener('click', () => setActiveForm('emporter'));
+
+    function setActiveForm(form) {
+      livraisonButton.classList.remove('active');
+      emporterButton.classList.remove('active');
+      livraisonForm.classList.remove('active');
+      emporterForm.classList.remove('active');
+
+      if (form === 'livraison') {
+        livraisonButton.classList.add('active');
+        livraisonForm.classList.add('active');
+      } else if (form === 'emporter') {
+        emporterButton.classList.add('active');
+        emporterForm.classList.add('active');
+      }
+    }
+
+
+    document.getElementById('numLivraison').addEventListener('input', function (event) {
+  const input = event.target;
+  const pattern = /^\d{9,13}$/; 
+
+  if (!pattern.test(input.value)) {
+    input.setCustomValidity('Numéro de téléphone incorrect, réessayez');
+  } else {
+    input.setCustomValidity(''); 
+  }
+});
+
+document.getElementById('numEmporter').addEventListener('input', function (event) {
+  const input = event.target;
+  const pattern = /^\d{9,13}$/; 
+
+  if (!pattern.test(input.value)) {
+    input.setCustomValidity('Numéro de téléphone incorrect, réessayez');
+  } else {
+    input.setCustomValidity('');
+  }
+});
+
+
+function validateTime() {
+  const selectElement = document.getElementById("selectEmpEmporter");
+  const timeInput = document.getElementById("heureEmporter");
+
+  // Get selected location and input time
+  const selectedLocation = selectElement.value;
+  const inputTime = timeInput.value;
+  if (!inputTime) {
+    timeInput.setCustomValidity("Veuillez sélectionner une heure.");
+    timeInput.reportValidity();
+    return false;
+  }
+
+  // Get current time
+  const currentTime = new Date();
+  const currentHours = currentTime.getHours();
+  const currentMinutes = currentTime.getMinutes();
+
+  // Parse input time
+  const [inputHours, inputMinutes] = inputTime.split(":").map(Number);
+
+  // Define opening and closing hours based on location
+  let openingHour, closingHour;
+  if (selectedLocation === "Babek Hay Riad") {
+    openingHour = 11;
+    closingHour = 24;
+  } else if (selectedLocation === "Babek Agdal" || selectedLocation === "Babek Le Carrousel") {
+    openingHour = 11;
+    closingHour = 20;
+  }
+
+  // Validate input time is not in the past
+  if (inputHours < currentHours || (inputHours === currentHours && inputMinutes < currentMinutes)) {
+    timeInput.setCustomValidity("L'heure sélectionnée est dans le passé. Veuillez réessayer.");
+    timeInput.reportValidity();
+    return false;
+  }
+
+  // Validate input time is within store hours
+  if (inputHours < openingHour || (inputHours === closingHour && inputMinutes > 0) || inputHours >= closingHour) {
+    timeInput.setCustomValidity("L'heure sélectionnée est en dehors des horaires d'ouverture.");
+    timeInput.reportValidity();
+    return false;
+  }
+
+  // If valid, reset custom validity
+  timeInput.setCustomValidity("");
+  return true;
+}
+
+
+    function populateHiddenField(form) {
+  const addedProducts = JSON.parse(localStorage.getItem('added_products')) || [];
+  
+  // Create a string with each product on a new line
+  const productList = addedProducts.map(product => product.name || JSON.stringify(product)).join('\n');
+  
+  const finalValue = `${productList}`;
+
+  // Get the submit button and change text to "Please wait" while disabling it
+  let submitButton;
+  if (form === 'livraison') {
+    submitButton = document.querySelector('#livraisonForm button');
+  } else if (form === 'emporter') {
+    submitButton = document.querySelector('#emporterForm button');
+  }
+
+  submitButton.textContent = 'Attendez...';
+  submitButton.disabled = true;
+
+  if (form === 'livraison') {
+    document.getElementById('hiddenFieldLivraison').value = finalValue;
+    document.getElementById('modeLivraison').value = 'Livraison';
+  } else if (form === 'emporter') {
+    document.getElementById('hiddenFieldEmporter').value = finalValue;
+    document.getElementById('modeEmporter').value = 'Emporter';
+  }
+
+  submitted = true;
+
+}
+
+
+    function showResponse() {
+      alert("Votre commande a été soumise avec succès !");
+      localStorage.clear();
+      window.location.href = 'acceuil.html'
+      submitted = false;
+    }
+
+    setActiveForm('livraison');
+  </script>
+</body>
+</html>

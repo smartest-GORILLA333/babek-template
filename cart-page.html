@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babek panier </title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <style>
+    /* Basic reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* General styling */
+    body {
+      font-family: Lobster, sans-serif;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+    h1{
+    padding: 5px 0;
+    font-size: 2rem;
+    color: #333333bc;
+    cursor: pointer;
+}
+
+    .cart-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Product Section */
+    .product-section {
+      flex: 1 1 60%;
+    }
+
+    .product-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product-info {
+      flex: 1;
+      margin-left: 15px;
+    }
+
+    .product-info h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+    .trash{
+        padding-bottom: 60px;
+    }
+    .trash span{
+        font-size: 1.7rem;
+        cursor: pointer;
+    }
+
+    .summary-section {
+      flex: 1 1 30%;
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .summary-section h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .checkout-button {
+      background-color: #ff5722;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-button:hover {
+      background-color: #e64a19;
+    }
+    input {
+    width: 60px;
+    margin: 5px 10px;
+    padding: 0px 0px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+input:focus{
+    border-color: #ff6200;
+}
+  </style>
+</head>
+<body>
+    
+<span onclick="window.location.href = 'index.html'"><h1>◄Revenir</h1></span>
+
+  <div class="cart-container">
+    
+    <div class="product-section">
+     
+    </div>
+    
+    <div class="summary-section">
+      
+    </div>
+    
+  </div>
+  <script>
+        product_section=document.querySelector(".product-section")
+        summary_section = document.querySelector(".summary-section")
+        added_products=JSON.parse(localStorage.getItem("added_products")) || []
+
+        function delProduct(i){
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit de votre panier")
+            if (confirmation) {
+                added_products.splice(i, 1);
+                localStorage.setItem("added_products",JSON.stringify(added_products))
+                location.reload();
+                
+
+        } else {
+            
+        }
+
+        }
+
+        function updatePrice(evt, i) {
+    const parentElement = evt.target.closest(".product-card"); 
+    const priceElement = parentElement.querySelector(".product-price"); 
+    const NameElement = parentElement.querySelector("h3");
+    const totalPriceEl = document.getElementById("total_price");
+
+    let price;
+
+    if (NameElement.textContent.includes("custom taco")) {
+        price = prix2; 
+    } else {
+        price = prix1; 
+    }
+
+    const total = price * evt.target.value;
+    const modified_product = added_products[i];
+    modified_product["quantité"] = evt.target.value;
+    modified_product["prix"] = total;
+    added_products[i] = modified_product;
+    localStorage.setItem("added_products", JSON.stringify(added_products));
+
+    priceElement.textContent = `${total} DH`;
+    totalPriceEl.textContent = calculateTotalPrice(added_products) + " DH";
+}
+
+function calculateTotalPrice(listOfDicts) {
+    return listOfDicts.reduce((sum, dict) => {
+        let price = dict.prix;
+        
+        if (typeof price === "string") {
+            price = parseInt(price.match(/\d+/)?.[0] || 0, 10); 
+        }
+
+        return sum + price;
+    }, 0);
+}
+
+        
+
+        added_products.forEach((products,i) => {
+            
+            if (products.nom == "custom taco"){
+            prix2=parseInt(products.prix)   / parseInt( products.quantité)
+            product_section.insertAdjacentHTML("afterbegin", 
+            `
+      <div class="product-card">
+        <img src="burger.jpg" alt="Product Image">
+        <div class="product-info">
+          <h3>"${products.nom} "</h3>
+          <p>
+            ${JSON.stringify(Object.fromEntries(Object.entries(products).filter(([key]) => !["nom","prix","quantité"].includes(key)))).replace("}"," ").replace("{"," ").replace("]"," ").replace("["," ")}
+          </p>
+            <label >
+                Quantité:
+                <input type="number" id="quantity" value="${products.quantité}" min="1" onchange="updatePrice(event,${i})">
+    
+            </label>
+
+        </div>
+        <div class="product-price">${products.prix} DH</div>
+        <div class="trash" onclick="delProduct(${i})" ><span>🗑</span></div>
+      </div>
+    `
+        );
+
+        
+            }
+        if(products.nom != "custom taco"){
+            prix1=parseInt(products.prix)  / parseInt( products.quantité)
+            total=prix1*parseInt(products.quantité)
+            product_section.insertAdjacentHTML("afterbegin",
+    `
+      <div class="product-card">
+        <div class="product-info">
+          <h3>"${products.nom} "</h3>
+          <p>
+            ${JSON.stringify(Object.fromEntries(Object.entries(products).filter(([key]) => !["nom","quantité","prix"].includes(key)))).replace("}"," ").replace("{"," ").replace("]"," ").replace("["," ")}
+          </p>
+            <label >
+                Quantité:
+                <input type="number" id="quantity" value="${products.quantité}" min="1" onchange="updatePrice(event,${i})">
+    
+            </label>
+
+        </div>
+        <div class="product-price">${total } DH</div>
+        <div class="trash" onclick="delProduct(${i})"><span>🗑</span></div>
+      </div>
+    `      )
+
+                }
+
+
+        });
+
+        const checkoutButtonText = added_products.length === 0 ? 'Le panier est vide' : 'Validez ';
+const checkoutButtonDisabled = added_products.length === 0 ? 'disabled' : '';
+
+summary_section.insertAdjacentHTML("afterbegin",
+    `
+        <h2>Order Summary</h2>
+        <div class="summary-item">
+            <span>Prix Total:</span>
+            <span id="total_price">${calculateTotalPrice(added_products)}DH</span>
+        </div>
+        <div class="summary-item">
+            <span>Temp Moyenne de Livraison:</span>
+            <span>30 min</span>
+        </div>
+        <div class="summary-item">
+            <span>Prix Livraison:</span>
+            <span>GRATUIT</span>
+        </div>
+        <button class="checkout-button" onclick="window.location.href = 'commande.html'" ${checkoutButtonDisabled}>${checkoutButtonText}</button>
+    `
+);
+
+  </script>
+</body>
+</html>

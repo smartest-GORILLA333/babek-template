@@ -34,25 +34,42 @@
       margin: 0 auto;
     }
 
-    /* Product Section */
     .product-section {
       flex: 1 1 60%;
     }
 
     .product-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+  display: flex;
+  flex-wrap: wrap; /* Allows child elements to wrap within the container */
+  justify-content: space-between;
+  align-items: flex-start; /* Aligns items to the top of the container */
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    .product-card p{
-      word-wrap: break-word;
-    }
+.product-info {
+  flex: 1 1 100%; 
+  max-width: 100%;
+}
+
+.product-info p {
+  word-wrap: break-word; 
+  white-space: normal; 
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  color: #777;
+
+}
+
+.product-price,
+.trash {
+  white-space: nowrap; /* Prevents these elements from wrapping */
+}
+
+   
 
     .product-card img {
       width: 80px;
@@ -72,10 +89,7 @@
       margin-bottom: 8px;
     }
 
-    .product-info p {
-      font-size: 14px;
-      color: #777;
-    }
+
 
     .product-price {
       font-size: 16px;
@@ -217,21 +231,40 @@ function calculateTotalPrice(listOfDicts) {
         return sum + price;
     }, 0);
 }
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.slice(0, maxLength) + '...';
+    }
+    return text;
+}
+
+function toggleText(element, fullText, maxLength) {
+    if (element.dataset.truncated === "true") {
+        element.innerText = fullText;
+        element.dataset.truncated = "false";
+    } else {
+        element.innerText = truncateText(fullText, maxLength);
+        element.dataset.truncated = "true";
+    }
+}
+
 
         
 
         added_products.forEach((products,i) => {
             
             if (products.nom == "custom taco"){
-            prix2=parseInt(products.prix)   / parseInt( products.quantité)
+            prix2=parseInt(products.prix)   / parseInt( products.quantité);
+            const productDetails = JSON.stringify(Object.fromEntries(Object.entries(products).filter(([key]) => !["nom","prix","quantité"].includes(key)))).replace("}"," ").replace("{"," ").replace("]"," ").replace("["," ")
+
+            const truncatedText = truncateText(productDetails, 50);
             product_section.insertAdjacentHTML("afterbegin", 
             `
       <div class="product-card">
-        <img src="burger.jpg" alt="Product Image">
         <div class="product-info">
           <h3>"${products.nom} "</h3>
-          <p>
-            ${JSON.stringify(Object.fromEntries(Object.entries(products).filter(([key]) => !["nom","prix","quantité"].includes(key)))).replace("}"," ").replace("{"," ").replace("]"," ").replace("["," ")}
+          <p class="toggle-text" "data-truncated="true">
+              ${truncatedText}
           </p>
             <label >
                 Quantité:
@@ -248,6 +281,10 @@ function calculateTotalPrice(listOfDicts) {
 
         
             }
+
+            
+
+
         if(products.nom != "custom taco"){
             prix1=parseInt(products.prix)  / parseInt( products.quantité)
             total=prix1*parseInt(products.quantité)
@@ -274,9 +311,20 @@ function calculateTotalPrice(listOfDicts) {
                 }
 
 
-        });
 
-        const checkoutButtonText = added_products.length === 0 ? 'Le panier est vide' : 'Validez ';
+    document.querySelectorAll(".toggle-text").forEach(element => {
+    element.addEventListener("click", () => {
+        const fullText = JSON.stringify(Object.fromEntries(Object.entries(products).filter(([key]) => !["nom","prix","quantité"].includes(key)))).replace("}"," ").replace("{"," ").replace("]"," ").replace("["," ");
+        const maxLength = 50;
+        toggleText(element, fullText, maxLength);
+    });
+});
+
+        });
+ 
+   
+
+const checkoutButtonText = added_products.length === 0 ? 'Le panier est vide' : 'Validez ';
 const checkoutButtonDisabled = added_products.length === 0 ? 'disabled' : '';
 
 summary_section.insertAdjacentHTML("afterbegin",
